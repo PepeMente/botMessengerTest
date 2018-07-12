@@ -73,7 +73,7 @@ def webhook():
                             if w in greatings :
                                 greating_detected = True
                             
-                            else if word_list[sentence_length] == "?" & greating_detected == True :
+                            elif word_list[sentence_length] == "?" & greating_detected == True :
                                 g_question_detected = True
                                
                              
@@ -82,7 +82,7 @@ def webhook():
                             
                             if greating_detected & g_question_detected :
                                 message.append("Bonjour! Je vais très bien merci, et vous :)?")
-                            else if greating_detected :
+                            elif greating_detected :
                                 message.append("Bonjour! comment allez vous aujourd'hui :) ?")  
                     
                     send_message(sender_id, message)

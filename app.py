@@ -6,8 +6,10 @@ from datetime import datetime
 import requests
 from flask import Flask, request
 
-app = Flask(__name__)
+from nltk.tokenize import sent_tokenize, wordpunct_tokenize
 
+app = Flask(__name__)
+greatings = ['bonjour','salut','coucou','ca','va']
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -28,6 +30,9 @@ def webhook():
 
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
+    
+    
+    
 
     if data["object"] == "page":
 
@@ -35,12 +40,52 @@ def webhook():
             for messaging_event in entry["messaging"]:
 
                 if messaging_event.get("message"):  # someone sent us a message
+                    # Greating scenario identifiers
+                    greating_detected = False 
+                    g_question_detected = False
+                    g_problem_detected = False
+                    g_ok_detected = False
+                    g_not_well_detected = False
+                    g_so_so_detected = False
 
+                    # I've got a problem scenario identifiers
+                    
+                    # I've got a question scenario identifiers
+                    
+                    # I want to order scenario identifiers
+                    
+                    
+                    # Message response
+                    response = ""
+                    
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-
-                    send_message(sender_id, "roger that!")
+                    sentence_tokenized = sent_tokenize(message _text)  # split the message in sentences. This is a list of string                 
+                    number_of_sentence = len(sentence_tokenized)
+                    
+                    for k in range (number_of_sentence):
+                        word_list = wordpunct_tokenize(sentence_tokenized[k]) # split the sentence in words. This is a list of words
+                        
+                        for word in word_list :
+                            w = word.lower
+                            sentence_length = len (word_list)
+                            if w in greatings :
+                                greating_detected = True
+                            
+                            else if word_list[sentence_length] == "?" & greating_detected == True :
+                                g_question_detected = True
+                               
+                             
+                            
+                            
+                            
+                            if greating_detected & g_question_detected :
+                                message.append("Bonjour! Je vais très bien merci, et vous :)?")
+                            else if greating_detected :
+                                message.append("Bonjour! comment allez vous aujourd'hui :) ?")  
+                    
+                    send_message(sender_id, message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

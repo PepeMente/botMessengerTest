@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 from flask import Flask, request
 
-from nltk.tokenize import sent_tokenize, word_tokenize
+#from nltk.tokenize import sent_tokenize, word_tokenize
 
 app = Flask(__name__)
 greatings = ['bonjour','salut','coucou','ca','va']
@@ -62,13 +62,17 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    message_text.decode("utf8")
-                    sentence_tokenized = sent_tokenize(message_text)  # split the message in sentences. This is a list of string 
-                    return (sentence_tokenized)                
-                    number_of_sentence = len(sentence_tokenized)
+                    #message_text.decode("utf8")
+                    message_tmp = message_text.split(".")
+                    message = []
+                    for i in range (len(message)):
+                        message.append(message_tmp[i].split("?"))
+                        
+                                    
+                    number_of_sentence = len(message)
                     
                     for k in range (number_of_sentence):
-                        word_list = word_tokenize(sentence_tokenized[k]) # split the sentence in words. This is a list of words
+                        word_list = message.split() # split the sentence in words. This is a list of words
                         
                         for word in word_list :
                             w = word.lower
@@ -84,11 +88,11 @@ def webhook():
                             
                             
                             if greating_detected and g_question_detected :
-                                message+="Bonjour! Je vais très bien merci, et vous :)?"
+                                response+="Bonjour! Je vais très bien merci, et vous :)?"
                             elif greating_detected :
-                                message+="Bonjour! comment allez vous aujourd'hui :) ?"  
+                                response+="Bonjour! comment allez vous aujourd'hui :) ?"  
                     
-                    send_message(sender_id, message)
+                    send_message(sender_id, response)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

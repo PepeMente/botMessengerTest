@@ -84,9 +84,9 @@ def webhook():
                             
                             
                             if greating_detected and g_question_detected :
-                                message.append("Bonjour! Je vais très bien merci, et vous :)?")
+                                message+="Bonjour! Je vais très bien merci, et vous :)?"
                             elif greating_detected :
-                                message.append("Bonjour! comment allez vous aujourd'hui :) ?")  
+                                message+="Bonjour! comment allez vous aujourd'hui :) ?"  
                     
                     send_message(sender_id, message)
 

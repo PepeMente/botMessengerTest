@@ -144,6 +144,8 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+try :
+    if __name__ == '__main__':
+        app.run(debug=True)
+except type_de_l_exception as exception_retournee :
+    print("Voici l'erreur :",exception_retournee)

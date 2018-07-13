@@ -10,7 +10,10 @@ from flask import Flask, request
 #from nltk.tokenize import sent_tokenize, word_tokenize
 
 app = Flask(__name__)
-greatings = ['bonjour','salut','coucou','ca','va']
+greatings = ["bonjour","salut","coucou","ca va","ça va"]
+problem = ["problème","pb","ennuis","ennui","soucis","marche pas"]
+
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -31,7 +34,7 @@ def webhook():
 
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
-    
+    print(log)
     
     
 
@@ -72,10 +75,10 @@ def webhook():
                     number_of_sentence = len(message)
                     
                     for k in range (number_of_sentence):
-                        word_list = message.split() # split the sentence in words. This is a list of words
+                        word_list = message[k].split() # split the sentence in words. This is a list of words
                         
                         for word in word_list :
-                            w = word.lower
+                            w = word.lower()
                             sentence_length = len (word_list)
                             if w in greatings :
                                 greating_detected = True

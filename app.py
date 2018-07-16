@@ -91,6 +91,7 @@ def webhook():
                         
                         for word in word_list :
                             w = word.lower()
+                            print (w)
                             if w in greatings :
                                 greating_detected = True
                             

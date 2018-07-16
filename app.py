@@ -95,7 +95,7 @@ def webhook():
                             if w in greatings :
                                 greating_detected = True
                             
-                        if word_list[sentence_length] == "?" & greating_detected == True :
+                        if word_list[sentence_length -1] == "?" and greating_detected == True :
                             g_question_detected = True
                         
                         elif greating_detected and g_question_detected :

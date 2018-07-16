@@ -67,10 +67,10 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
                     try :
-                        message_text.decode("utf8")
+                        #message_text.decode("utf8")
                         message_tmp = message_text.split(".")
                     
-                    except TypeError as E :
+                    except UnicodeError as E :
                         print(E)
                         
                     message = []
@@ -94,12 +94,10 @@ def webhook():
                             if w in greatings :
                                 greating_detected = True
                             
-                            elif word_list[sentence_length] == "?" & greating_detected == True :
-                                g_question_detected = True
-                       
-                            
-                            
-                        if greating_detected and g_question_detected :
+                        if word_list[sentence_length] == "?" & greating_detected == True :
+                            g_question_detected = True
+                        
+                        elif greating_detected and g_question_detected :
                             response += "Bonjour! Je vais très bien merci, et vous :)?"
                         elif greating_detected :
                             response += "Bonjour! comment allez vous aujourd'hui :) ?"

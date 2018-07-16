@@ -67,7 +67,7 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
                     try :
-                        #message_text.decode("utf8")
+                        message_text.encode("utf8")
                         message_tmp = message_text.split(".")
                     
                     except UnicodeError as E :
@@ -87,10 +87,10 @@ def webhook():
                     
                     for k in range (number_of_sentence):
                         word_list = message[k][0].split() # split the sentence in words. This is a list of words
+                        sentence_length = len (word_list)
                         
                         for word in word_list :
                             w = word.lower()
-                            sentence_length = len (word_list)
                             if w in greatings :
                                 greating_detected = True
                             

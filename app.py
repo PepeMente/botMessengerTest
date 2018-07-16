@@ -67,16 +67,16 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
                     #message_text.decode("utf8")
                     message_tmp = message_text.split(".")
-                    log("Split message" + message_tmp)
+                    log (message_tmp)
                     message = []
-                    for i in range (len(message)):
+                    for i in range (len(message_tmp)):
                         message.append(message_tmp[i].split("?"))
                         
                                     
                     number_of_sentence = len(message)
                     
-                    if number_of_sentence == 0 :
-                        message = message_tmp
+                    #if number_of_sentence == 0 :
+                    #    message = message_tmp
                     
                     
                     for k in range (number_of_sentence):

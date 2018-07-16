@@ -10,7 +10,7 @@ from flask import Flask, request
 #from nltk.tokenize import sent_tokenize, word_tokenize
 
 app = Flask(__name__)
-greatings = ["bonjour","salut","coucou","ca va","ça va"]
+greatings = ["bonjour","salut","coucou","ca va","ça va","oups"]
 problem = ["problème","pb","ennuis","ennui","soucis","marche pas"]
 
 

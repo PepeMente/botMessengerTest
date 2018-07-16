@@ -34,7 +34,7 @@ def webhook():
 
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
-    print(log)
+    
     
     
 
@@ -65,7 +65,9 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    #message_text.decode("utf8")
+                    
+                    try 
+                    message_text.decode("utf8")
                     message_tmp = message_text.split(".")
                     
                     message = []

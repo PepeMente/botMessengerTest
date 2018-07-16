@@ -66,10 +66,13 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
-                    try 
-                    message_text.decode("utf8")
-                    message_tmp = message_text.split(".")
+                    try :
+                        message_text.decode("utf8")
+                        message_tmp = message_text.split(".")
                     
+                    except TypeError as E :
+                        print(E)
+                        
                     message = []
                     
                     for i in range (len(message_tmp)):

@@ -88,6 +88,8 @@ def webhook():
                     for k in range (number_of_sentence):
                         word_list = message[k][0].split() # split the sentence in words. This is a list of words
                         sentence_length = len (word_list)
+                        print(word_list)
+                        print(sentence_length)
                         
                         for word in word_list :
                             w = word.lower()

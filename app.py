@@ -90,23 +90,23 @@ def webhook():
                         sentence_length = len (word_list)
                         print(word_list)
                         print(sentence_length)
-                        
-                        for word in word_list :
-                            w = word.lower()
-                            print (w)
-                            if w in greatings :
-                                greating_detected = True
+                        if word_list != None :
+                            for word in word_list :
+                                w = word.lower()
+                                print (w)
+                                if w in greatings :
+                                    greating_detected = True
                             
-                        if word_list[sentence_length -1] == "?" and greating_detected == True :
-                            g_question_detected = True
+                            if word_list[sentence_length -1] == "?" and greating_detected == True :
+                                g_question_detected = True
                         
-                        elif greating_detected and g_question_detected :
-                            response += "Bonjour! Je vais très bien merci, et vous :)?"
-                        elif greating_detected :
-                            response += "Bonjour! comment allez vous aujourd'hui :) ?"
+                            elif greating_detected and g_question_detected :
+                                response += "Bonjour! Je vais très bien merci, et vous :)?"
+                            elif greating_detected :
+                                response += "Bonjour! comment allez vous aujourd'hui :) ?"
                             
-                        else :
-                            response += "Excusez moi je n'ai pas bien compris, pourriez vous reformuler svp?"        
+                            else :
+                                response += "Excusez moi je n'ai pas bien compris, pourriez vous reformuler svp?"        
                     
                     send_message(sender_id, response)
 

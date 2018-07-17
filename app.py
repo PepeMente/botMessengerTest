@@ -84,7 +84,7 @@ def webhook():
                         lastindex_tmp = 1
                         if message_tmp[i][0] == "?" :
                             message.append(["?"])
-                        elif len(message[i])>1 :    
+                        elif len(message_tmp[i])>1 :    
                             for j in range (1,len(message_tmp[i])):
                                 if message_tmp[i][j] == "?" :
                                     lastindex_tmp = j

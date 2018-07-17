@@ -68,7 +68,7 @@ def webhook():
                                        
                     try :
                         message_text.encode("utf8")
-                        
+                        message_text.lower()
                     
                     except UnicodeError as E :
                         print(E)
@@ -112,10 +112,9 @@ def webhook():
                         print(word_list)
                         print(sentence_length)
                         if sentence_length != 0 :
-                            for word in word_list :
-                                w = word.lower()
-                                print (w)
-                                if w in greatings :
+                            for word in word_list :                                
+                                print (word)
+                                if word in greatings :
                                     greating_detected = True
                             
                             if word_list[sentence_length -1] == "?" and greating_detected == True :
@@ -124,8 +123,7 @@ def webhook():
                             elif greating_detected and g_question_detected :
                                 response += "Bonjour! Je vais très bien merci, et vous :)?"
                             elif greating_detected :
-                                response += "Bonjour! comment allez vous aujourd'hui :) ?"
-                            
+                                response += "Bonjour! comment allez vous aujourd'hui :) ?"                            
                             else :
                                 response += "Excusez moi je n'ai pas bien compris, pourriez vous reformuler svp?"        
                     

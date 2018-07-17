@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 from flask import Flask, request
 
-#from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import sent_tokenize, word_tokenize
 
 app = Flask(__name__)
 greatings = ["bonjour","salut","coucou","ca va","ça va","oups"]
@@ -66,7 +66,9 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
-                    try :
+                    message = nltk.sent_tokenize(message_text)
+                    print (message)
+                    """try :
                         message_text.encode("utf8")
                         message_tmp = message_text.split(".")
                     
@@ -119,7 +121,7 @@ def webhook():
                             else :
                                 response += "Excusez moi je n'ai pas bien compris, pourriez vous reformuler svp?"        
                     
-                    send_message(sender_id, response)
+                    send_message(sender_id, response)"""
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

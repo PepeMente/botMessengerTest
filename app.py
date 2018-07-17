@@ -7,6 +7,7 @@ from datetime import datetime
 import requests
 from flask import Flask, request
 
+# Failed to use the nltk librairy
 #from nltk.tokenize import sent_tokenize, word_tokenize
 
 app = Flask(__name__)
@@ -33,8 +34,7 @@ def webhook():
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
-    log(data)  # you may not want to log every incoming message in production, but it's good for testing
-    
+    log(data)  # log every message we get, for debbuging purposes
     
     
 
@@ -72,7 +72,8 @@ def webhook():
                     
                     except UnicodeError as E :
                         print(E)
-                    # We get a list of sentences    
+                    # We get a list of sentences 
+                       
                     message_tmp = message_text.split(".")  
                       
                     message = []
@@ -83,7 +84,7 @@ def webhook():
                         lastindex_tmp = 1
                         if message_tmp[i][0] == "?" :
                             message.append(["?"])
-                        elif len(message[i]>1) :    
+                        elif len(message[i])>1 :    
                             for j in range (1,len(message_tmp[i])):
                                 if message_tmp[i][j] == "?" :
                                     lastindex_tmp = j

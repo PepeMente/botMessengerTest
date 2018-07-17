@@ -69,6 +69,8 @@ def webhook():
                     try :
                         message_text.encode("utf8")
                         message_text.lower()
+                        print ("message text")
+                        print (message_text)
                     
                     except UnicodeError as E :
                         print(E)

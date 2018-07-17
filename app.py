@@ -80,17 +80,23 @@ def webhook():
                     
                     #We want to spot the interrogative forms, AND keep the interrogation points
                     for i in range (len(message_tmp)):
-                        firstindex_tmp = 0
-                        lastindex_tmp = 1
+                        
                         if message_tmp[i][0] == "?" :
                             message.append(["?"])
-                        elif len(message_tmp[i])>1 :    
+                        elif len(message_tmp[i])>1 :
+                        
+                            firstindex_tmp = 0
+                            lastindex_tmp = 1
+                            
                             for j in range (1,len(message_tmp[i])):
+                                lastindex_tmp = j
                                 if message_tmp[i][j] == "?" :
-                                    lastindex_tmp = j
-                                    message.append(message_tmp[i][firstindex_tmp : lastindex_tmp])
+                                    
+                                    message.append([message_tmp[i][firstindex_tmp : lastindex_tmp]])
                                     firstindex_tmp = j
-                                
+                                    
+                            message.append([message_tmp[i][firstindex_tmp : lastindex_tmp]])
+                            
                     if len (message) == 0 :
                         message = message_tmp                        
                                     

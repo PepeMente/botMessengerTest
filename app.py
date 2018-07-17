@@ -7,12 +7,11 @@ from datetime import datetime
 import requests
 from flask import Flask, request
 
-import nltk
 #from nltk.tokenize import sent_tokenize, word_tokenize
 
 app = Flask(__name__)
-greatings = ["bonjour","salut","coucou","ca va","ça va","oups"]
-problem = ["problème","pb","ennuis","ennui","soucis","marche pas"]
+greatings = ["bonjour","salut","coucou","ca","ça","va",]
+problem = ["problème","pb","ennuis","ennui","soucis","marche",]
 
 
 
@@ -66,21 +65,22 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    
-                    message = nltk.sent_tokenize(message_text)
-                    print (message)
-                    """try :
+                                       
+                    try :
                         message_text.encode("utf8")
-                        message_tmp = message_text.split(".")
+                        
                     
                     except UnicodeError as E :
                         print(E)
-                        
+                    # We get a list of sentences    
+                    message_tmp = message_text.split(".")  
+                      
                     message = []
                     
+                    #We want to spot the interrogative forms, AND keep the interrogation points
                     for i in range (len(message_tmp)):
                         firstindex_tmp = 0
-                        lastindextmp = 1
+                        lastindex_tmp = 1
                         if message_tmp[i][0] == "?" :
                             message.append(["?"])
                         elif len(message[i]>1) :    
@@ -122,7 +122,7 @@ def webhook():
                             else :
                                 response += "Excusez moi je n'ai pas bien compris, pourriez vous reformuler svp?"        
                     
-                    send_message(sender_id, response)"""
+                    send_message(sender_id, response)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

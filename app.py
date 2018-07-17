@@ -124,6 +124,12 @@ def webhook():
                                 response += "Excusez moi je n'ai pas bien compris, pourriez vous reformuler svp?"        
                     
                     send_message(sender_id, response)
+                    greating_detected = False 
+                    g_question_detected = False
+                    g_problem_detected = False
+                    g_ok_detected = False
+                    g_not_well_detected = False
+                    g_so_so_detected = False
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

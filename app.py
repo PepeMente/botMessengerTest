@@ -76,7 +76,13 @@ def webhook():
                     message = []
                     
                     for i in range (len(message_tmp)):
-                        message.append(message_tmp[i].split("?"))
+                        firstindex_tmp = 0
+                        lastindextmp = 0
+                        for j in range (len(message_tmp[i])):
+                            if message_tmp[i][j] == "?" :
+                                lastindex_tmp = j
+                                message.append(message_tmp[i][firstindex_tmp : lastindex_tmp])
+                                firstindex_tmp = j
                         
                                     
                     number_of_sentence = len(message)

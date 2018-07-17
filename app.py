@@ -90,7 +90,7 @@ def webhook():
                         sentence_length = len (word_list)
                         print(word_list)
                         print(sentence_length)
-                        if word_list != None :
+                        if word_list != [] :
                             for word in word_list :
                                 w = word.lower()
                                 print (w)

@@ -70,14 +70,16 @@ def webhook():
                         message_text.encode("utf8")
                         message_lower = message_text.lower()
                         print ("message text")
-                        print (message_text)
+                        print (message_lower)
                     
                     except UnicodeError as E :
                         print(E)
                     # We get a list of sentences 
                        
                     message_tmp = message_lower.split(".")  
-                      
+                    
+                    print("Message_tmp")
+                    print(message_tmp)  
                     message = []
                     
                     #We want to spot the interrogative forms, AND keep the interrogation points
@@ -111,6 +113,7 @@ def webhook():
                     for k in range (number_of_sentence):
                         word_list = message[k][0].split() # split the sentence in words. This is a list of words
                         sentence_length = len (word_list)
+                        print("Word list + sentence length")
                         print(word_list)
                         print(sentence_length)
                         if sentence_length != 0 :

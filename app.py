@@ -68,7 +68,7 @@ def webhook():
                                        
                     try :
                         message_text.encode("utf8")
-                        message_text.lower()
+                        message_lower = message_text.lower()
                         print ("message text")
                         print (message_text)
                     
@@ -76,7 +76,7 @@ def webhook():
                         print(E)
                     # We get a list of sentences 
                        
-                    message_tmp = message_text.split(".")  
+                    message_tmp = message_lower.split(".")  
                       
                     message = []
                     

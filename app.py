@@ -111,7 +111,7 @@ def webhook():
                     
                     
                     for k in range (number_of_sentence):
-                        word_list = message[k].split() # split the sentence in words. This is a list of words
+                        word_list = message[k][0].split() # split the sentence in words. This is a list of words
                         sentence_length = len (word_list)
                         print("Word list + sentence length")
                         print(word_list)
@@ -119,8 +119,11 @@ def webhook():
                         if sentence_length != 0 :
                             for word in word_list :                                
                                 print (word)
-                                if word in greatings :
-                                    greating_detected = True
+                                try :
+                                    if word in greatings :
+                                        greating_detected = True
+                                except UnicodeError as E:
+                                    print("Unicode error"+word)
                             
                             if word_list[sentence_length -1] == "?" and greating_detected == True :
                                 g_question_detected = True

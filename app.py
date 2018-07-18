@@ -82,7 +82,7 @@ def webhook():
                     print(message_tmp)  
                     message = []
                     
-                    #We want to spot the interrogative forms, AND keep the interrogation points
+                    #We want to spot the interrogative forms, AND keep the interrogation points (split() would have goten rid of this)
                     for i in range (len(message_tmp)-1):
                         
                         if message_tmp[i][0] == "?" :
@@ -105,10 +105,8 @@ def webhook():
                         message = message_tmp                        
                                     
                     number_of_sentence = len(message)
-                    
-                    #if number_of_sentence == 0 :
-                    #    message = message_tmp
-                    
+                    print("Message avant processing")
+                    print(message)
                     
                     for k in range (number_of_sentence):
                         word_list = message[k][0].split() # split the sentence in words. This is a list of words
@@ -123,7 +121,8 @@ def webhook():
                                     if word in greatings :
                                         greating_detected = True
                                 except UnicodeError as E:
-                                    print("Unicode error"+word)
+                                    print("Unicode error, word :")
+                                    print(word)
                             
                             if word_list[sentence_length -1] == "?" and greating_detected == True :
                                 g_question_detected = True

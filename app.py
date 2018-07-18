@@ -99,7 +99,7 @@ def webhook():
                                     message.append([message_tmp[i][firstindex_tmp : lastindex_tmp]])
                                     firstindex_tmp = j
                                     
-                            message.append([message_tmp[i][firstindex_tmp : lastindex_tmp]])
+                            message.append([message_tmp[i][firstindex_tmp : lastindex_tmp+1]])
                             
                     if len (message) == 0 :
                         message = message_tmp                        

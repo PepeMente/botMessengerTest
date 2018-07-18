@@ -111,7 +111,7 @@ def webhook():
                     
                     
                     for k in range (number_of_sentence):
-                        word_list = message[k][0].split() # split the sentence in words. This is a list of words
+                        word_list = message[k].split() # split the sentence in words. This is a list of words
                         sentence_length = len (word_list)
                         print("Word list + sentence length")
                         print(word_list)
